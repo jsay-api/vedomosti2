@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+	{% block title %}
+		<title>Offshores</title>
+	{% endblock %}
+
+	<!-- {% block menu0 %}disabled{% endblock %} -->
+
+	{% block content %}
+		<section class="jumbotron">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-11 srch">
+						<form role="form">
+							<input type="search" class="form-control sprite" id="Search" placeholder="Введите название офшора, страну или имя бенефициара" />
+						</form>
+					</div>
+					<div class="col-md-1 no-pad">
+						<button type="button" >
+						ИСКАТЬ
+					</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 settings"><a href="#" >Параметры поиска <img src={% static "img/settings.png" %} alt="settings"></a></div>
+		</section>
+	{% endblock %}

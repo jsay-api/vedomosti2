@@ -1,0 +1,159 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background-color: #fff6f1
+}
+
+header {
+  padding: 20px 0;
+}
+
+header .row,
+footer .row {
+  display: flex;
+  align-items: center;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+nav > p {
+  cursor: pointer;
+}
+
+header p {
+  padding: 0 20px;
+  margin: 0;
+}
+
+header a {
+	text-decoration: none;
+}
+
+header .col-sm-8{
+	display: flex;
+	justify-content: center;
+}
+
+header .col-sm-2 .menu{
+	display: flex;
+	justify-content: flex-start;
+}
+
+.login p {cursor: pointer;}
+.login .dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  left: auto;
+  width: 290px;
+  border-radius: 0;
+  padding: 10px;
+  font-family: Helvetica, Arial, sans-serif; 
+}
+
+.login .dropdown-menu h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  
+}
+.menu {
+  position: relative;
+  display: inline;
+  cursor: pointer;
+}
+.menu:hover {
+  cursor: pointer;
+}
+.menu .dropdown-menu {
+  position: absolute;
+  top: 25px;
+  right: auto;
+  left: auto;
+  width: 290px;
+  border-radius: 0;
+  padding: 10px;
+  font-family: Helvetica, Arial, sans-serif; 
+}
+
+.menu .dropdown-menu li a {
+  color: black;
+  font-size: 16px;
+  padding: 5px 15px;
+}
+.login:hover {cursor: pointer;}
+
+.login .dropdown-menu button {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+
+.jumbotron {
+	background-color: #f5e2de;
+  height: 10.25em;
+}
+
+.sprite {
+  border-color: #2e6f6f;
+  border-style: solid;
+  border-width: 1px;
+  height: 40px;
+  padding-left: 30px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: url("/static/img/search.png") no-repeat left
+}
+
+.srch {
+  padding-right: 0;
+}
+
+.no-pad {
+  padding-left: 0;
+}
+
+button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -moz-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  display: inline-block;
+  height: 40px;
+  line-height: 2.75em;
+  padding: 0 1.5em;
+  background-color: #332f2e;
+  border-radius: 1px;
+  border: solid 1px #332f2e;
+  color: #fff !important;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.settings {
+  color: #332f2e;
+  margin-top: 2em;
+}
+
+footer {
+  font-size: 12px;
+  padding: 20px 0;
+}
+
+footer .col-sm-8 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+a, a:hover, a:active {
+  text-decoration: none;
+  color: black;
+}
