@@ -48,8 +48,8 @@ class Offshore(models.Model):
 		verbose_name = "офшор"
 		verbose_name_plural = "офшоры"
 
-	def clean(self):
-		self.off_name = self.off_name.capitalize()
+	# def clean(self):
+	# 	self.off_name = self.off_name.uppercase()
 
 	def __unicode__(self):
 		return self.off_name
@@ -58,45 +58,45 @@ class Offshore(models.Model):
 		return self.off_name
 	
 class AssetsBeneficiaries(models.Model):
-	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.CASCADE)
-	beneficiary = models.ForeignKey(Beneficiary,verbose_name = "бенефициар", on_delete = models.CASCADE)
-	share = models.DecimalField(verbose_name = "доля бенефициара в активе, %", max_digits = 6, decimal_places = 4, blank = True)
+	beneficiary = models.ForeignKey(Beneficiary,verbose_name = "бенефициар", on_delete = models.SET(""))
+	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
+	share = models.DecimalField(verbose_name = "доля бенефициара в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
 	rel_date = models.DateField(verbose_name = "дата актуальности", null = True, blank = True)
 	source = models.CharField(verbose_name = "источник", max_length = 150, blank = True)
 
 	class Meta:
-		verbose_name = "Связь Активы-бенефициры"
-		verbose_name_plural = "Связи Активы-бенефициры"
+		verbose_name = "Бенефициар-Актив"
+		verbose_name_plural = "Бенефициры-Активы"
 
-	# def __unicode__(self):
-	# 	return "связь"
+	def __unicode__(self):
+		return "связь"
 
-	# def __str__(self):
-	# 	return "связь"
+	def __str__(self):
+		return "связь"
 
 
 class BeneficiariesOffshores(models.Model):
-	beneficiary = models.ForeignKey(Beneficiary, verbose_name = "бенефициар", on_delete = models.CASCADE)
-	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.CASCADE)
-	share = models.DecimalField(verbose_name = "доля бенефициара в офшоре, %", max_digits = 6, decimal_places = 4, blank = True)
+	beneficiary = models.ForeignKey(Beneficiary, verbose_name = "бенефициар", on_delete = models.SET(""))
+	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
+	share = models.DecimalField(verbose_name = "доля бенефициара в офшоре, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
 	rel_date = models.DateField(verbose_name = "дата актуальности", blank = True, null = True)
 	source = models.CharField(verbose_name = "источник", max_length = 150, blank = True)
 
 	class Meta:
-		verbose_name = "Связь Бенефициары-Офшоры"
-		verbose_name_plural = "Связи Бенефициары-Офшоры"
+		verbose_name = "Офшор-Бенефициар"
+		verbose_name_plural = "Офшоры-Бенефициары"
 
 
 
 class OffshoresAssets(models.Model):
-	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.CASCADE)
-	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.CASCADE)
-	share = models.DecimalField(verbose_name = "доля офшора в активе, %", max_digits = 6, decimal_places = 4, blank = True)
+	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
+	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
+	share = models.DecimalField(verbose_name = "доля офшора в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
 	rel_date = models.DateField(verbose_name = "дата актуальности", blank = True, null = True,)
 	source = models.CharField(verbose_name = "источник", max_length = 150, blank = True)
 
 	class Meta:
-		verbose_name = "Связь Активы-Офшоры"
-		verbose_name_plural = "Связи Активы-Офшоры"
+		verbose_name = "Офшор-Актив"
+		verbose_name_plural = "Офшоры-Активы"
 
 

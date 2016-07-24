@@ -1,0 +1,61 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block extrastyle %}
+	<style type="text/css">
+		html {
+			background-color: #fff6f1;
+		}
+		body .login {
+			background-color: #fff6f1;
+		}
+		#header {
+			background-color: #f5e2de;
+			color: black;
+		}
+		a {
+			color: black;
+		}
+		.module h2, .module caption, .inline-group h2 {
+			margin: 0;
+			padding: 8px;
+			font-weight: 400;
+			font-size: 13px;
+			text-align: left;
+			background: #f5e2de;
+			color: #000;
+		}
+		tbody {
+			background-color: #fff6f1 !important;
+		}
+		#content-related .module {
+    		background: #fff6f1 !important;
+		}
+		div.breadcrumbs {
+		    background: #fff6f1;
+		    padding: 10px 40px;
+		    border: none;
+		    font-size: 14px;
+		    color: #000;
+		    text-align: left;
+		}
+		div.breadcrumbs a {
+		    color: #000;
+		}
+		div.breadcrumbs a:hover {
+		    color: #332f2e;
+		}
+		/*.object-tools a:link, .object-tools a:visited {
+		    background: #332f2e;
+		}*/
+
+
+	</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
