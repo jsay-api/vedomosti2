@@ -28,6 +28,7 @@ class AssetModelAdmin(admin.ModelAdmin):
 	list_display = ["asset_name"]
 	search_fields = ["asset_name"]
 	inlines = [ABInline, OAInline]
+	list_per_page = 10
 	class Meta:
 		model = Asset
 
@@ -44,6 +45,7 @@ class BeneficiaryModelAdmin(admin.ModelAdmin):
 	search_fields = ["ben_name", "ben_lastname", "ben_holding"]
 	inlines = [ABInline]
 	list_display = ["ben_name", "ben_lastname", "ben_midname", "ben_holding"]
+	list_per_page = 10
 	# list_editable = ["ben_name"]
 	class Meta:
 		model = Beneficiary
@@ -71,6 +73,7 @@ class ABModelAdmin(admin.ModelAdmin):
 	list_filter = ["asset", "beneficiary", "source"]
 	list_editable = ["share", "source"]
 	list_display_links = ["beneficiary"]
+	list_per_page = 10
 	class Meta:
 		model = AssetsBeneficiaries
 
@@ -95,6 +98,7 @@ class BOModelAdmin(admin.ModelAdmin):
 	list_display = ["beneficiary", "ben_name", "ben_midname", "ben_holding", "offshore", "off_jur", "off_prnt", "share", "rel_date", "source"]
 	list_filter = ["beneficiary", "offshore", "source"]
 	search_fields = ["ben_lastname", "ben_name", "ben_midname", "ben_holding", "offshore", "off_jur", "off_prnt", "share", "rel_date", "source"]
+	list_per_page = 10
 	class Meta:
 		model = BeneficiariesOffshores
 
@@ -127,6 +131,7 @@ class OAModelAdmin(admin.ModelAdmin):
 	list_display = ["offshore", "off_jur", "off_prnt", "asset", "share", "rel_date", "source"]
 	list_filter = ["offshore", "asset", "source"]
 	search_fields = ["offshore", "off_jur", "off_prnt", "asset", "share", "rel_date", "source"]
+	list_per_page = 10
 	class Meta:
 		model = OffshoresAssets
 
