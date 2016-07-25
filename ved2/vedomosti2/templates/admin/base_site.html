@@ -6,9 +6,14 @@
 {% block extrastyle %}
 	<style type="text/css">
 
-		html, body, .container, #header, #wrap, #suit-center, .suit-columns, .suit-column, .suit-left, .left-nav, .breadcrumb, .left-nav>ul>li.active ul, .container-fluid, .jumbotron, #push {
+		html, body, .container, #header, #wrap, #suit-center, .suit-columns, .suit-column, .suit-left, .left-nav, .left-nav>ul>li.active ul, #push {
 			margin: 0;
 			padding: 0;
+		}
+
+		.jumbotron, .breadcrumb, {
+			padding: 10px;
+			margin: 0;
 		}
 
 		body, html, .suit-columns, .suit-column, .left-nav, .breadcrumb, .left-nav>ul>li.active ul, #wrap, #suit-center, .suit-columns, .suit-column, .suit-left, .left-nav, .breadcrumb, .left-nav>ul>li.active ul, .container-fluid, .jumbotron, #push {
@@ -17,25 +22,35 @@
 			font-family: 'Roboto', sans-serif !important;
 		}
 
+		
+		/*Header*/
 		#header {
-			background-image: url('{% static "img/logo.png" %}');
+			/*background-image: url('{% static "img/logo.png" %}');
 			background-repeat: no-repeat;
-			background-position: center;
+			background-position: center;*/
 			height: 138px;
 			background-color: #f5e2de;
+			vertical-align: middle;
+			white-space:nowrap;
+    		overflow:hidden;
+    		width: 100%;
 		}
 		
 		#header a {
-		
-			vertical-align: center;
+			vertical-align: middle;
 			color: #332f2e;
 			text-shadow: none;
+		}
+
+		.header .navi {
+			display: inline-block;
+		    padding: 5em 0 0 10em;
+		    float: left;
 		}
 
 		.header .menu {
 		    display: inline-block;
 		    margin-left: 15px;
-		    vertical-align: center;
 		}
 
 		.menu {
@@ -43,9 +58,11 @@
 		  display: inline;
 		  cursor: pointer;
 		}
+
 		.menu:hover {
 		  cursor: pointer;
 		}
+
 		.menu .dropdown-menu {
 		  position: absolute;
 		  top: 25px;
@@ -59,10 +76,27 @@
 		}
 
 		.menu .dropdown-menu li a {
-
 			font-size: 16px;
 			padding: 5px 15px;
 		}
+
+		.header .logo {
+			display: inline-block;
+		    padding: 20px 140px 20px 145px;
+		    /*float: left;*/
+		    /*line-height:normal;*/
+		    overflow:hidden
+		}
+
+		.header #user-tools {
+			display: inline-block;
+		    padding: 5em 111px 0 0;
+		    float: right;
+		}
+
+
+		
+		/*Content*/
 		.wrap {
 			background-color: #fff6f1 !important;
 		}
