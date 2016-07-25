@@ -136,5 +136,5 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static",)
 
 # MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 
-TEMPLATE_CONTEXT_PROCESSORS = TCP + ['django.core.context_processors.request',]
+# TEMPLATE_CONTEXT_PROCESSORS = TCP + ['django.core.context_processors.request',]
 
