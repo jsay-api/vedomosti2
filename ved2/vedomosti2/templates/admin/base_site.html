@@ -228,6 +228,28 @@
 		    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#f6dace', EndColorStr='#f5e2de', GradientType=0))";
 		}
 
+		/*Pagination*/
+		.pagination ul li a, .pagination ul li span {
+			background-color: #fff6f1;
+		}
+
+		.pagination ul li a:hover, .pagination ul li span:hover {
+			background-color: #f6dace;
+		}
+
+		.pagination ul li.active a, .pagination ul li.active span {
+			color: #332f2e;
+			background-color: #f5e2de;
+			background-repeat: no-repeat;
+		    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff6f1), to(#f5e2de));
+		    background-image: -webkit-linear-gradient(#fff6f1, #f5e2de);
+		    background-image: -moz-linear-gradient(#fff6f1, #f5e2de);
+		    background-image: -o-linear-gradient(top, #fff6f1, #f5e2de);
+		    background-image: -khtml-gradient(linear, left top, left bottom, from(#fff6f1), to(#f5e2de));
+		    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#fff6f1', EndColorStr='#f5e2de', GradientType=0);
+		    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#fff6f1', EndColorStr='#f5e2de', GradientType=0))";
+		}
+
 		/*Footer*/
 		.footer {
 		    color: #332f2e;

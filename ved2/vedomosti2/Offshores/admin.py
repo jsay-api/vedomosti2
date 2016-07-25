@@ -56,6 +56,7 @@ class OffshoreModelAdmin(admin.ModelAdmin):
 	list_display = ["off_name", "off_jurisdiction", "off_parent"]
 	list_display_links = ["off_name"]
 	search_fields = ["off_name", "off_jurisdiction", "off_parent"]
+	list_per_page = 10
 	# inlines = [BOInline, OAInline]
 	class Meta:
 		model = Offshore
