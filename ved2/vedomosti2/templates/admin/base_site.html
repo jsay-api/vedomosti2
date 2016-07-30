@@ -34,12 +34,17 @@
 			white-space:nowrap;
     		overflow:hidden;
     		width: 100%;
+    		position: relative;
+    		z-index: 10000;
+    		overflow: visible;
 		}
 		
 		#header a {
 			vertical-align: middle;
 			color: #332f2e;
 			text-shadow: none;
+			position: relative;
+    		z-index: 10000;
 		}
 
 		.header .navi {
@@ -71,11 +76,7 @@
 		.dropdown-menu {
 		  position: absolute !important;
 		  z-index: 10000;
-		}
-
-		.dropdown-menu {
-		  position: fixed !important;
-    	  top: 95px;
+    	  top: 30px;
 		  right: auto;
 		  left: auto;
 		  width: 200px;
@@ -84,6 +85,10 @@
 		  font-family: 'Roboto', Helvetica, sans-serif; 
 		  background-color: #fff6f1;
 		  color: #332f2e;
+		}
+
+		.jumbotron {
+			z-index: 0;
 		}
 
 		.menu .dropdown-menu li a {
@@ -125,6 +130,10 @@
 
 		
 		/*Content*/
+		.suit-columns {
+			z-index: 0;
+		}
+
 		.wrap {
 			background-color: #fff6f1 !important;
 		}
