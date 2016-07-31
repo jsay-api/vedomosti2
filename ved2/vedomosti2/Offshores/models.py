@@ -42,6 +42,7 @@ class Beneficiary(models.Model):
 class Offshore(models.Model):
 	off_name = models.CharField(verbose_name = "название офшора", max_length = 50, unique=True)
 	off_jurisdiction = models.CharField(verbose_name = "юрисдикция офшора", max_length = 50, blank = True)
+	image = models.ImageField(upload_to = "offshores/", blank = True, null = True)
 	off_parent = models.CharField(verbose_name = "материнский офшор", max_length = 50, blank = True)
 
 	class Meta:
@@ -56,6 +57,10 @@ class Offshore(models.Model):
 
 	def __str__(self):
 		return self.off_name
+
+	def image_thumb(self):
+		return '<img src="/media/%s" width="100" height="100" />' % (self.image)
+	image_thumb.allow_tags = True
 	
 class AssetsBeneficiaries(models.Model):
 	beneficiary = models.ForeignKey(Beneficiary,verbose_name = "бенефициар", on_delete = models.SET(""))

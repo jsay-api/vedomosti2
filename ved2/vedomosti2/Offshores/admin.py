@@ -55,7 +55,7 @@ class BeneficiaryModelAdmin(admin.ModelAdmin):
 
 
 class OffshoreModelAdmin(admin.ModelAdmin):
-	list_display = ["off_name", "off_jurisdiction", "off_parent"]
+	list_display = ["off_name", "off_jurisdiction", "off_parent", "image"]
 	list_display_links = ["off_name"]
 	search_fields = ["off_name", "off_jurisdiction", "off_parent"]
 	list_per_page = 10
@@ -97,7 +97,7 @@ class ABModelAdmin(admin.ModelAdmin):
 class BOModelAdmin(admin.ModelAdmin):
 	list_display = ["beneficiary", "ben_name", "ben_midname", "ben_holding", "offshore", "off_jur", "off_prnt", "share", "rel_date", "source"]
 	list_filter = ["beneficiary", "offshore", "source"]
-	search_fields = ["ben_lastname", "ben_name", "ben_midname", "ben_holding", "offshore", "off_jur", "off_prnt", "share", "rel_date", "source"]
+	search_fields = ["beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_holding", "offshore__off_name", "offshore__off_jurisdiction", "offshore__off_parent", "source", "share", "rel_date"]
 	list_per_page = 10
 	class Meta:
 		model = BeneficiariesOffshores
