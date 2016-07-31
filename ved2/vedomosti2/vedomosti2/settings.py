@@ -138,3 +138,29 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static",)
 
 # TEMPLATE_CONTEXT_PROCESSORS = TCP + ['django.core.context_processors.request',]
 
+# SUIT_CONFIG = {
+# 'MENU': (
+#     # Keep original label and models
+#     # 'sites',
+#     # Rename app and set icon
+#     {'app': 'Offshores', 'label': 'Офшоры', 'icon':'icon-lock'},
+#     # Reorder app models
+#     {'app': 'auth', 'models': ('user', 'group')},
+#     # Custom app, with models
+#     {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+#     # Cross-linked models with custom name; Hide default icon
+#     {'label': 'Custom', 'icon':None, 'models': (
+#     'auth.group',
+#     {'model': 'auth.user', 'label': 'Staff'}
+#     )},
+#     # Custom app, no models (child links)
+#     {'label': 'Users', 'url': 'auth.user', 'icon':'icon-user'},
+#     # Separator
+#     '-',
+#     # Custom app and model with permissions
+#     {'label': 'Secure', 'permissions': 'auth.add_user', 'models': [
+#     {'label': 'custom-child', 'permissions': ('auth.add_user', 'auth.add_group')}
+# ]},
+# )
+# }
+
