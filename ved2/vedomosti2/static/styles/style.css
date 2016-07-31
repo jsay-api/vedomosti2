@@ -73,10 +73,11 @@ header .col-sm-2 .menu{
   top: 25px;
   right: auto;
   left: auto;
-  width: 290px;
+  width: 200px;
   border-radius: 0;
   padding: 10px;
-  font-family: Helvetica, Arial, sans-serif; 
+  font-family: 'Roboto', Helvetica, sans-serif; 
+  background-color: #fff6f1; 
 }
 
 .menu .dropdown-menu li a {
