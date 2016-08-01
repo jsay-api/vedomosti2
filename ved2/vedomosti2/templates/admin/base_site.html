@@ -304,6 +304,40 @@
 		    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#fff6f1', EndColorStr='#f5e2de', GradientType=0))";
 		}
 
+		/*Calendar widget*/
+		.calendar td  {
+			background: #fff6f1;
+		}
+
+		.calendar td .selected a{
+			background: #f5e2de;
+		}
+
+		.calendar td.nonday, .calendar th, .calendarbox h2, .clockbox h2, .calendarbox caption, .clockbox caption, .calendar-cancel, .calendar-shortcuts {
+			background-color: #f5e2de;
+			color: #332f2e;
+			background-color: #f5e2de;
+			background-image: -moz-linear-gradient(top, #fff6f1, #f5e2de);
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff6f1), to(#f5e2de));
+			background-image: -webkit-linear-gradient(top, #fff6f1, #f5e2de);
+			background-image: -o-linear-gradient(top, #fff6f1, #f5e2de);
+			background-image: linear-gradient(to bottom, #fff6f1, #f5e2de);
+			background-repeat: repeat-x;
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff6f1', endColorstr='#f5e2de', GradientType=0);
+		}
+
+		.calendarbox .calendarnav-previous, .calendarbox .calendarnav-next, .calendar td a:hover, .timelist a:hover {
+			background-color: #332f2e;
+			background-repeat: no-repeat;
+		    background-image: -webkit-gradient(linear, left top, left bottom, from(#3e3836), to(#332f2e));
+		    background-image: -webkit-linear-gradient(#3e3836, #332f2e);
+		    background-image: -moz-linear-gradient(#3e3836, #332f2e);
+		    background-image: -o-linear-gradient(top, #3e3836, #332f2e);
+		    background-image: -khtml-gradient(linear, left top, left bottom, from(#3e3836), to(#332f2e));
+		    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#3e3836', EndColorStr='#332f2e', GradientType=0);
+		    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3e3836', EndColorStr='#332f2e', GradientType=0))";
+		}
+
 		/*Footer*/
 		.footer {
 		    color: #332f2e;
