@@ -11,16 +11,14 @@
 		<section class="jumbotron">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-11 srch">
-						<form role="form">
-							<input type="search" class="form-control sprite" id="Search" placeholder="Введите название офшора, страну или имя бенефициара" />
-						</form>
-					</div>
-					<div class="col-md-1 no-pad">
-						<button type="button" >
-						ИСКАТЬ
-					</button>
-					</div>
+					<form role="form" method="GET" action="">
+						<div class="col-md-11 srch">
+							<input type="search" name = "offsearch" class="form-control sprite" id="Search" placeholder="Введите название офшора, страну или имя бенефициара" />
+						</div>
+						<div class="col-md-1 no-pad">
+							<input type="submit" value="ИСКАТЬ" class="sr" />
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="col-md-12 settings"><a href="#" >Параметры поиска <img src={% static "img/settings.png" %} alt="settings"></a></div>

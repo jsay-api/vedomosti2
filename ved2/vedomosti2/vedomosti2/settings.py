@@ -132,9 +132,9 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static",)
 
-# MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 
-# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 
 # TEMPLATE_CONTEXT_PROCESSORS = TCP + ['django.core.context_processors.request',]
 

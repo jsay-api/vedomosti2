@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^user/logout/$', logout),
     url(r'^login/$', form),
     url(r'^user/login/$', login),
+    url(r'^faq/', faq),
 ]

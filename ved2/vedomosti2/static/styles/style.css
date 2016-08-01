@@ -92,6 +92,19 @@ header .col-sm-2 .menu{
   text-transform: uppercase;
 }
 
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a, .sub>li>a:hover {
+      text-decoration: none;
+      color: #332f2e;
+      background-color: #f5e2de;
+      background-image: -moz-linear-gradient(top, #fff6f1, #f5e2de);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff6f1), to(#f5e2de));
+      background-image: -webkit-linear-gradient(top, #fff6f1, #f5e2de);
+      background-image: -o-linear-gradient(top, #fff6f1, #f5e2de);
+      background-image: linear-gradient(to bottom, #fff6f1, #f5e2de);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff6f1', endColorstr='#f5e2de', GradientType=0);
+    }
+
 .jumbotron {
 	background-color: #f5e2de;
   height: 10.25em;
@@ -116,7 +129,7 @@ header .col-sm-2 .menu{
   padding-left: 0;
 }
 
-button {
+button, .sr {
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;

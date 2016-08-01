@@ -10,4 +10,7 @@ def logout(request):
 	auth.logout(request)
 	return HttpResponseRedirect('/login')
 
+def faq(request):
+	return render(request, 'faq.html')
+
 
