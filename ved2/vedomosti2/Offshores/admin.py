@@ -71,7 +71,7 @@ class OffshoreModelAdmin(admin.ModelAdmin):
 
 class ABModelAdmin(admin.ModelAdmin):
 	list_display = ["ben_name", "beneficiary", "ben_midname", "ben_holding", "asset", "share", "rel_date", "source"]
-	search_fields = ["asset", "beneficiary", "ben_name", "ben_midname", "ben_holding", "share", "rel_date", "source"]
+	search_fields = ["asset__asset_name", "beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_midname", "beneficiary__ben_holding", "share", "rel_date", "source"]
 	list_filter = ["asset", "beneficiary", "source"]
 	list_editable = ["share", "source"]
 	list_display_links = ["beneficiary"]
@@ -132,7 +132,7 @@ class BOModelAdmin(admin.ModelAdmin):
 class OAModelAdmin(admin.ModelAdmin):
 	list_display = ["offshore", "off_jur", "off_prnt", "asset", "share", "rel_date", "source"]
 	list_filter = ["offshore", "asset", "source"]
-	search_fields = ["offshore", "off_jur", "off_prnt", "asset", "share", "rel_date", "source"]
+	search_fields = ["offshore__off_name", "offshore__off_jurisdiction", "offshore__off_parent", "asset__asset_name", "share", "rel_date", "source"]
 	list_per_page = 10
 	class Meta:
 		model = OffshoresAssets
