@@ -27,7 +27,7 @@ class BOInline(admin.StackedInline):
 class AssetModelAdmin(admin.ModelAdmin):
 	list_display = ["asset_name"]
 	search_fields = ["asset_name"]
-	inlines = [ABInline, OAInline]
+	# inlines = [ABInline, OAInline]
 	list_per_page = 10
 	class Meta:
 		model = Asset
@@ -43,7 +43,7 @@ class BeneficiaryModelAdmin(admin.ModelAdmin):
 	
 	list_display_links = ["ben_lastname"]
 	search_fields = ["ben_name", "ben_lastname", "ben_holding"]
-	inlines = [ABInline]
+	# inlines = [ABInline]
 	list_display = ["ben_name", "ben_lastname", "ben_midname", "ben_holding"]
 	list_per_page = 10
 	# list_editable = ["ben_name"]
