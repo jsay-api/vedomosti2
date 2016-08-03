@@ -55,9 +55,11 @@ class BeneficiaryModelAdmin(admin.ModelAdmin):
 
 
 class OffshoreModelAdmin(admin.ModelAdmin):
-	list_display = ["off_name", "off_jurisdiction", "off_parent", "image"]
+	list_display = ["off_name", "off_jurisdiction", "off_parent", "file", "image"]
 	list_display_links = ["off_name"]
 	search_fields = ["off_name", "off_jurisdiction", "off_parent"]
+	fields = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb"]
+	readonly_fields = ['image_thumb']
 	list_per_page = 10
 	# inlines = [BOInline, OAInline]
 	class Meta:

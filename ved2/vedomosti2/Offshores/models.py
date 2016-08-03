@@ -42,6 +42,7 @@ class Beneficiary(models.Model):
 class Offshore(models.Model):
 	off_name = models.CharField(verbose_name = "название офшора", max_length = 50, unique=True)
 	off_jurisdiction = models.CharField(verbose_name = "юрисдикция офшора", max_length = 50, blank = True)
+	file = models.FileField(upload_to = "offshores/", blank = True, null = True)
 	image = models.ImageField(upload_to = "offshores/", blank = True, null = True)
 	off_parent = models.CharField(verbose_name = "материнский офшор", max_length = 50, blank = True)
 

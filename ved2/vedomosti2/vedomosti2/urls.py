@@ -17,6 +17,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from Offshores.views import *
 from Users.views import *
+from django.conf import settings
+from django.conf.urls import patterns
 
 
 urlpatterns = [
@@ -27,3 +29,10 @@ urlpatterns = [
     url(r'^user/login/$', login),
     url(r'^faq/', faq),
 ]
+
+
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'%s(?P<path>.*)' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )
