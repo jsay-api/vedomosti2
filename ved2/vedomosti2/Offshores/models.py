@@ -50,6 +50,9 @@ class Offshore(models.Model):
 		verbose_name = "офшор"
 		verbose_name_plural = "офшоры"
 
+	def clean(self):
+		self.off_name = self.off_name.title()
+
 	# def clean(self):
 	# 	self.off_name = self.off_name.uppercase()
 
