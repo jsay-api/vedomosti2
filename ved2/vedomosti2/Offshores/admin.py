@@ -71,7 +71,7 @@ class OffshoreModelAdmin(admin.ModelAdmin):
 
 class ABModelAdmin(admin.ModelAdmin):
 	list_display = ["ben_name", "beneficiary", "ben_midname", "ben_holding", "asset", "share", "rel_date", "source"]
-	search_fields = ["asset__asset_name", "beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_midname", "beneficiary__ben_holding", "share", "rel_date", "source"]
+	search_fields = ["asset__asset_name", "beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_midname", "beneficiary__ben_holding", "share",  "source"]
 	list_filter = ["asset", "beneficiary", "source"]
 	list_editable = ["share", "source"]
 	list_display_links = ["beneficiary"]
@@ -97,9 +97,9 @@ class ABModelAdmin(admin.ModelAdmin):
 	
 
 class BOModelAdmin(admin.ModelAdmin):
-	list_display = ["beneficiary", "ben_name", "ben_midname", "ben_holding", "offshore", "off_jur", "off_prnt", "share", "rel_date", "source"]
+	list_display = ["beneficiary", "ben_name", "ben_midname", "ben_holding", "offshore", "off_jur", "off_prnt", "share", "rel_date",  "source"]
 	list_filter = ["beneficiary", "offshore", "source"]
-	search_fields = ["beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_holding", "offshore__off_name", "offshore__off_jurisdiction", "offshore__off_parent", "source", "share", "rel_date"]
+	search_fields = ["beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_holding", "offshore__off_name", "offshore__off_jurisdiction", "offshore__off_parent", "source", "share", ]
 	list_per_page = 10
 	class Meta:
 		model = BeneficiariesOffshores
@@ -130,9 +130,9 @@ class BOModelAdmin(admin.ModelAdmin):
 
 
 class OAModelAdmin(admin.ModelAdmin):
-	list_display = ["offshore", "off_jur", "off_prnt", "asset", "share", "rel_date", "source"]
+	list_display = ["offshore", "off_jur", "off_prnt", "asset", "share", "rel_date",  "source"]
 	list_filter = ["offshore", "asset", "source"]
-	search_fields = ["offshore__off_name", "offshore__off_jurisdiction", "offshore__off_parent", "asset__asset_name", "share", "rel_date", "source"]
+	search_fields = ["offshore__off_name", "offshore__off_jurisdiction", "offshore__off_parent", "asset__asset_name", "share",  "source"]
 	list_per_page = 10
 	class Meta:
 		model = OffshoresAssets
