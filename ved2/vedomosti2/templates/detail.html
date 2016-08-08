@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+	{% block title %}
+		<title>{{ instance.share }}</title>
+	{% endblock %}
+
+	{% block content %}
+		<section class="jumbotron">
+			<div>
+				
+				{{ instance.offshore__off_name }}
+				{{ instance.beneficiary__ben_name }}
+				{{ instance.share }}
+				{{ instance.rel_date }}
+				{{ instance.source }}
+	
+			</div>
+			
+		</section>
+		
+	{% endblock %}
