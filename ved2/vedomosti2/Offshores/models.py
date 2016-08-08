@@ -70,7 +70,7 @@ class AssetsBeneficiaries(models.Model):
 	beneficiary = models.ForeignKey(Beneficiary,verbose_name = "бенефициар", on_delete = models.SET(""))
 	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля бенефициара в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
-	rel_date = models.TextField(verbose_name = "дата актуальности", null = True, blank = True)
+	rel_date = models.DateField(verbose_name = "дата актуальности", null = True, blank = True)
 	source = models.CharField(verbose_name = "источник", max_length = 150, blank = True)
 
 	class Meta:
@@ -87,7 +87,7 @@ class AssetsBeneficiaries(models.Model):
 class BeneficiariesOffshores(models.Model):
 	beneficiary = models.ForeignKey(Beneficiary, verbose_name = "бенефициар", on_delete = models.SET(""))
 	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
-	share = models.DecimalField(verbose_name = "доля бенефициара в офшоре, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
+	share = models.DecimalField(verbose_name = "доля бенефициара в офшоре, %", max_digits = 7, decimal_places = 4, blank = True, default = 0.0)
 	rel_date = models.DateField(verbose_name = "дата актуальности", blank = True, null = True)
 	source = models.CharField(verbose_name = "источник", max_length = 150, blank = True)
 

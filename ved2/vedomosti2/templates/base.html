@@ -5,7 +5,7 @@
 	{% block title %}
 	{% endblock %}
 	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -24,15 +24,15 @@
 <body>
 	<header class = "container">
 		<div class="row">
-			<span class="col-sm-2 first">
+			<span class="col-xs-2 first">
 			{% block menu %}
 				{% include 'inc-menu.html' %}
 			{% endblock %}
 			</span>
-			<span class="col-sm-8">
+			<span class="col-xs-8">
 			<a href="/" class="logo"><img src={% static "img/logo.png" %}></a>
 			</span>
-			<span class="col-sm-2 last">
+			<span class="col-xs-2 last">
 			{% block nav%}
 				{% include 'inc-nav.html' %}
 			{% endblock %}

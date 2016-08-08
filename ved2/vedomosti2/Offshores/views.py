@@ -1,16 +1,31 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib import auth
+from .models import *
 
 
 def home(request):
 	menu = 'disabled'
-	return render(request, 'index.html', {"menu0": menu})
+	queryset = BeneficiariesOffshores.objects.all()
+	context = {
+		"offshores_list" : queryset,
+		"menu0": menu
+	}
+	return render(request, 'index.html', context)
+
+
+def detail(request, id=None):
+	instance = get_object_or_404(BeneficiariesOffshores, id = id)
+	context = {
+		"instance": instance
+	}
+	return render(request, 'detail.html', context)
 
 def logout(request):
 	auth.logout(request)
 	return HttpResponseRedirect('/login')
 
 def faq(request):
-	return render(request, 'faq.html')
+	menu = 'disabled'
+	return render(request, 'faq.html', {"menu1": menu})
 
 

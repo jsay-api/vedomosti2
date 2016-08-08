@@ -23,4 +23,15 @@
 			</div>
 			<div class="col-md-12 settings"><a href="#" >Параметры поиска <img src={% static "img/settings.png" %} alt="settings"></a></div>
 		</section>
+		<section>
+			<div>
+				{% for off in offshores_list %}
+					{{ off.offshore__off_name }}
+					{{ off.beneficiary__ben_name }}
+					{{ off.share }}
+					{{ off.rel_date }}
+					{{ off.source }}
+				{% endfor %}
+			</div>
+		</section>
 	{% endblock %}

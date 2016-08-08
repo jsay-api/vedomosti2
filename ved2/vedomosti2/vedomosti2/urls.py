@@ -24,10 +24,11 @@ from django.conf.urls import patterns
 urlpatterns = [
     url(r'^vedadmin/', admin.site.urls),
     url(r'^$', home),
+    url(r'^(?P<id>\d+)/$', detail),
     url(r'^user/logout/$', logout),
     url(r'^login/$', form),
     url(r'^user/login/$', login),
-    url(r'^faq/', faq),
+    url(r'^faq/$', faq),
 ]
 
 
