@@ -2,18 +2,20 @@
 {% load staticfiles %}
 
 	{% block title %}
-		<title>{{ instance.share }}</title>
+		<title>{{ instance.offshore.off_name }}</title>
 	{% endblock %}
 
 	{% block content %}
 		<section class="jumbotron">
-			<div>
+			<div class="detail">
 				
-				{{ instance.offshore__off_name }}
-				{{ instance.beneficiary__ben_name }}
-				{{ instance.share }}
-				{{ instance.rel_date }}
-				{{ instance.source }}
+				<p><strong>Офшор: </strong>{{ instance.offshore.off_name }}</p>
+				<p><strong>Бенефициар: </strong>{{ instance.beneficiary.ben_name }} {{ instance.beneficiary.ben_lastname }}</p>
+				<p><strong>Доля бенефициара в офшоре, %: </strong>{{ instance.share }}</p>
+				<p><strong>Дата актуальности: </strong>{{ instance.rel_date }}</p>
+				<p><strong>Источник: </strong>{{ instance.source }}</p>
+				{% if instance.offshore.file %}<p><strong>Прикрепленные файлы: </strong><a href="{{ instance.offshore.file.url }}">{{ instance.offshore.file }}</a></p>{% endif %}
+				{% if instance.offshore.image %}<p><strong>Прикрепленные изображения: </strong><img src="{{ instance.offshore.image.url }}" class="img-responsive"></p> {% endif %}
 	
 			</div>
 			

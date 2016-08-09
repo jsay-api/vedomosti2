@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.template import RequestContext
 from django.contrib import auth
 from .models import *
 
@@ -18,7 +19,7 @@ def detail(request, id=None):
 	context = {
 		"instance": instance
 	}
-	return render(request, 'detail.html', context)
+	return render(request, 'detail.html', context, context_instance=RequestContext(request))
 
 def logout(request):
 	auth.logout(request)

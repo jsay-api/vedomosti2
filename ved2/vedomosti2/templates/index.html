@@ -22,16 +22,61 @@
 				</div>
 			</div>
 			<div class="col-md-12 settings"><a href="#" >Параметры поиска <img src={% static "img/settings.png" %} alt="settings"></a></div>
-		</section>
-		<section>
-			<div>
-				{% for off in offshores_list %}
-					{{ off.offshore__off_name }}
-					{{ off.beneficiary__ben_name }}
-					{{ off.share }}
-					{{ off.rel_date }}
-					{{ off.source }}
-				{% endfor %}
+			
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>
+										#
+									</th>
+									<th>
+										Офшор
+									</th>
+									<th>
+										Бенефициар
+									</th>
+									<th>
+										Доля бенефициара в офшоре, %
+									</th>
+									<th>
+										Дата актуальности
+									</th>
+									<th>
+										Источник
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for off in offshores_list %}
+								<tr>
+									<td>
+										{{ forloop.counter }}
+									</td>
+									<td>
+										<a href="{{ off.get_absolute_url }}">{{ off.offshore.off_name }}</a>
+									</td>
+									<td>
+										{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}
+									</td>
+									<td>
+										{{ off.share }}
+									</td>
+									<td>
+										{{ off.rel_date }}
+									</td>
+									<td>
+										{{ off.source }}
+									</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</section>
+		
 	{% endblock %}

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class Asset(models.Model):
 	asset_name = models.CharField(verbose_name = "название актива", max_length = 100, unique=True)
@@ -94,6 +95,9 @@ class BeneficiariesOffshores(models.Model):
 	class Meta:
 		verbose_name = "Офшор-Бенефициар"
 		verbose_name_plural = "Офшоры-Бенефициары"
+
+	def get_absolute_url(self):
+		return reverse('detail', kwargs = {"id": self.id})
 
 
 

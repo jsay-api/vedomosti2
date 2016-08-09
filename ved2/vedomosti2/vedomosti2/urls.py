@@ -19,12 +19,13 @@ from Offshores.views import *
 from Users.views import *
 from django.conf import settings
 from django.conf.urls import patterns
+from django.views.static import serve
 
 
 urlpatterns = [
     url(r'^vedadmin/', admin.site.urls),
     url(r'^$', home),
-    url(r'^(?P<id>\d+)/$', detail),
+    url(r'^(?P<id>\d+)/$', detail, name = 'detail'),
     url(r'^user/logout/$', logout),
     url(r'^login/$', form),
     url(r'^user/login/$', login),
@@ -33,7 +34,15 @@ urlpatterns = [
 
 
 
+# if settings.DEBUG:
+#     urlpatterns += patterns('',
+#         (r'%s(?P<path>.*)' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+#     )
+
+
 if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'%s(?P<path>.*)' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+   ]
