@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+
 	{% block title %}
 		<title>Offshores</title>
 	{% endblock %}
@@ -13,7 +14,7 @@
 				<div class="row">
 					<form role="form" method="GET" action="">
 						<div class="col-md-11 srch">
-							<input type="search" name = "offsearch" class="form-control sprite" id="Search" placeholder="Введите название офшора, страну или имя бенефициара" />
+							<input type="search" name = "q" class="form-control sprite" id="Search" placeholder="Введите название офшора, страну или имя бенефициара" value = "{{ request.GET.q }}"/>
 						</div>
 						<div class="col-md-1 no-pad">
 							<input type="submit" value="ИСКАТЬ" class="sr" />
@@ -34,6 +35,9 @@
 									</th>
 									<th>
 										Офшор
+									</th>
+									<th>
+										Юрисдикция офшора
 									</th>
 									<th>
 										Бенефициар
@@ -59,6 +63,9 @@
 										<a href="{{ off.get_absolute_url }}">{{ off.offshore.off_name }}</a>
 									</td>
 									<td>
+										{{ off.offshore.off_jurisdiction }}
+									</td>
+									<td>
 										{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}
 									</td>
 									<td>
@@ -77,6 +84,38 @@
 					</div>
 				</div>
 			</div>
+			<!-- 
+			{% for off in offshores_list %}
+								
+				{{ forloop.counter }}
+			
+				<a href="{{ off.get_absolute_url }}">{{ off.offshore.off_name }}</a>
+			
+				{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}
+			
+				{{ off.share }}
+			
+				{{ off.rel_date }}
+			
+				{{ off.source }}<br/>
+			{% endfor %} -->
+									
+
+			<div class="pagination">
+		    <span class="step-links">
+		        {% if offshores_list.has_previous %}
+		            <a href="?page={{ offshores_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><img src={% static "img/previous.png" %}></a>
+		        {% endif %}
+
+		        <span class="current">
+		            Page {{ offshores_list.number }} of {{ offshores_list.paginator.num_pages }}
+		        </span>
+
+		        {% if offshores_list.has_next %}
+		            <a href="?page={{ offshores_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><img src={% static "img/next.png" %}></a>
+		        {% endif %}
+		    </span>
+		</div>
 		</section>
 		
 	{% endblock %}

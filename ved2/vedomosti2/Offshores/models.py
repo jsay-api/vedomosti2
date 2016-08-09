@@ -50,6 +50,7 @@ class Offshore(models.Model):
 	class Meta:
 		verbose_name = "офшор"
 		verbose_name_plural = "офшоры"
+		ordering = ["off_name"]
 
 	def clean(self):
 		self.off_name = self.off_name.title()
@@ -77,6 +78,7 @@ class AssetsBeneficiaries(models.Model):
 	class Meta:
 		verbose_name = "Бенефициар-Актив"
 		verbose_name_plural = "Бенефициры-Активы"
+		ordering = ["beneficiary__ben_lastname"]
 
 	def __unicode__(self):
 		return "связь"
@@ -95,6 +97,7 @@ class BeneficiariesOffshores(models.Model):
 	class Meta:
 		verbose_name = "Офшор-Бенефициар"
 		verbose_name_plural = "Офшоры-Бенефициары"
+		ordering = ["offshore"]
 
 	def get_absolute_url(self):
 		return reverse('detail', kwargs = {"id": self.id})
@@ -111,5 +114,6 @@ class OffshoresAssets(models.Model):
 	class Meta:
 		verbose_name = "Офшор-Актив"
 		verbose_name_plural = "Офшоры-Активы"
+		ordering = ["offshore"]
 
 
