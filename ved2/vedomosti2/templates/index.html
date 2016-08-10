@@ -26,82 +26,27 @@
 			
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-xs-12">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th>
-										#
-									</th>
-									<th>
-										Офшор
-									</th>
-									<th>
-										Юрисдикция офшора
-									</th>
-									<th>
-										Бенефициар
-									</th>
-									<th>
-										Доля бенефициара в офшоре, %
-									</th>
-									<th>
-										Дата актуальности
-									</th>
-									<th>
-										Источник
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-							{% for off in offshores_list %}
-								<tr>
-									<td>
-										{{ forloop.counter }}
-									</td>
-									<td>
-										<a href="{{ off.get_absolute_url }}">{{ off.offshore.off_name }}</a>
-									</td>
-									<td>
-										{{ off.offshore.off_jurisdiction }}
-									</td>
-									<td>
-										{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}
-									</td>
-									<td>
-										{{ off.share }}
-									</td>
-									<td>
-										{{ off.rel_date }}
-									</td>
-									<td>
-										{{ off.source }}
-									</td>
-								</tr>
-							{% endfor %}
-							</tbody>
-						</table>
+					<div class="col-md-12">
+						<ul class="nav nav-tabs">
+							<li class="{{tab0}}">
+								<a href="/BO/">Офшоры-Бенефициары</a>
+							</li>
+							<li class="{{tab1}}">
+								<a href="/AB/">Офшоры-Активы</a>
+							</li>
+							<li class="{{tab2}}">
+								<a href="/AO/">Бенефициары-Активы</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<!-- 
-			{% for off in offshores_list %}
-								
-				{{ forloop.counter }}
-			
-				<a href="{{ off.get_absolute_url }}">{{ off.offshore.off_name }}</a>
-			
-				{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}
-			
-				{{ off.share }}
-			
-				{{ off.rel_date }}
-			
-				{{ off.source }}<br/>
-			{% endfor %} -->
+
+			{% block tabs %}
+			{% endblock %}
 									
 
-			<div class="pagination">
+		<!-- <div class="pagination">
 		    <span class="step-links">
 		        {% if offshores_list.has_previous %}
 		            <a href="?page={{ offshores_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><img src={% static "img/previous.png" %}></a>
@@ -115,7 +60,7 @@
 		            <a href="?page={{ offshores_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><img src={% static "img/next.png" %}></a>
 		        {% endif %}
 		    </span>
-		</div>
+		</div> -->
 		</section>
 		
 	{% endblock %}

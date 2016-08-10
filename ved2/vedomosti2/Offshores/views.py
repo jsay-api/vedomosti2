@@ -8,14 +8,25 @@ from .models import *
 
 def home(request):
 	menu = 'disabled'
-	queryset_list = BeneficiariesOffshores.objects.all().order_by("offshore")
+	context = {
+		"menu0": menu
+	}
+
+	return render(request, 'index.html', context)
+
+def BO(request):
+	menu = 'disabled'
+	tab0 = 'active'
+	queryset_list = BeneficiariesOffshores.objects.all().order_by("offshore__off_name")
 	query = request.GET.get("q")
 	if query:
 		queryset_list = queryset_list.filter(
 			Q(offshore__off_name__icontains=query) |
 			Q(offshore__off_jurisdiction__icontains=query) |
+			Q(offshore__off_parent__icontains=query) |
 			Q(beneficiary__ben_name__icontains=query) |
 			Q(beneficiary__ben_lastname__icontains=query) |
+			Q(beneficiary__ben_holding__icontains=query) |
 			Q(share__icontains=query) |
 			Q(source__icontains=query) 
 			).distinct()
@@ -29,12 +40,76 @@ def home(request):
 	except EmptyPage:
 		queryset = paginator.page(paginator.num_pages)
 	context = {
-		"offshores_list" : queryset,
-		"menu0": menu
+		"inst_list" : queryset,
+		"menu0": menu,
+		"tab0": tab0
 	}
 
-	return render(request, 'index.html', context)
+	return render(request, 'BO.html', context)
 
+
+def AB(request):
+	menu = 'disabled'
+	tab1 = 'active'
+	queryset_list = AssetsBeneficiaries.objects.all().order_by("asset__asset_name")
+	query = request.GET.get("q")
+	if query:
+		queryset_list = queryset_list.filter(
+			Q(asset__asset_name__icontains=query) |
+			Q(beneficiary__ben_name__icontains=query) |
+			Q(beneficiary__ben_lastname__icontains=query) |
+			Q(beneficiary__ben_holding__icontains=query) |
+			Q(share__icontains=query) |
+			Q(source__icontains=query) 
+			).distinct()
+
+	paginator = Paginator(queryset_list, 5)
+	page = request.GET.get("page")
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		queryset = paginator.page(1)
+	except EmptyPage:
+		queryset = paginator.page(paginator.num_pages)
+	context = {
+		"inst_list" : queryset,
+		"menu0": menu,
+		"tab1": tab1
+	}
+
+	return render(request, 'AB.html', context)
+
+
+def AO(request):
+	menu = 'disabled'
+	tab2 = 'active'
+	queryset_list = OffshoresAssets.objects.all().order_by("asset__asset_name")
+	query = request.GET.get("q")
+	if query:
+		queryset_list = queryset_list.filter(
+			Q(asset__asset_name__icontains=query) |
+			Q(offshore__off_name__icontains=query) |
+			Q(offshore__off_jurisdiction__icontains=query) |
+			Q(offshore__off_parent__icontains=query) |
+			Q(share__icontains=query) |
+			Q(source__icontains=query) 
+			).distinct()
+
+	paginator = Paginator(queryset_list, 5)
+	page = request.GET.get("page")
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		queryset = paginator.page(1)
+	except EmptyPage:
+		queryset = paginator.page(paginator.num_pages)
+	context = {
+		"inst_list" : queryset,
+		"menu0": menu,
+		"tab2": tab2
+	}
+
+	return render(request, 'AO.html', context)
 
 def detail(request, id=None):
 	instance = get_object_or_404(BeneficiariesOffshores, id = id)
