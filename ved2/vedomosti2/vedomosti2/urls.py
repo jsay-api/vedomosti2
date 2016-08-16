@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^vedadmin/', admin.site.urls),
     url(r'^$', home),
     url(r'^(?P<id>\d+)/$', detail, name = 'detail'),
+    # url(r'^(?P<slug>\d+)/$', DetailView.as_view(model = '', template_name = '')),
     url(r'^BO/$', BO),
     url(r'^AB/$', AB),
     url(r'^AO/$', AO),

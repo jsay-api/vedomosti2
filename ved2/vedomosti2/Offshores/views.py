@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404, JsonResponse
 from django.template import loader
+from django.views.generic.base import View
 from .models import *
 
 
@@ -183,6 +184,15 @@ def detail(request, id=None):
 	}
 	return render(request, 'detail.html', context, context_instance=RequestContext(request))
 
+def DetailView(request, slug=None):
+	template_name = None
+	model = None
+	instance = get_object_or_404(self.model, slug = slug)
+	context = {
+		"instance": instance
+	}
+	return render(request, self.template_name, context, context_instance=RequestContext(request))
+
 def logout(request):
 	auth.logout(request)
 	return HttpResponseRedirect('/login')
@@ -191,4 +201,13 @@ def faq(request):
 	menu = 'disabled'
 	return render(request, 'faq.html', {"menu1": menu})
 
+
+# def BaseView(View):
+# 	template_name = None
+# 	model = None
+# 	def get(self, request, *args, **kwargs):
+# 		objects = self.model.objects.all()
+# 		context = {}
+# 		context['objects'] = objects
+# 		return render(request, self.template_name, context)
 
