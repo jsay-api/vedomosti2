@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+	{% block title %}
+		<title>{{ instance.beneficiary.ben_name }}</title>
+	{% endblock %}
+
+	{% block content %}
+		<section class="jumbotron">
+			<div class="detail">
+				
+				<p><strong>ФИО бенефициара: </strong>{{ instance.beneficiary.ben_name }} {{ instance.beneficiary.ben_lastname }}</p>
+				<p><strong>Юрисдикция офшора: </strong>{{ instance.offshore.off_jurisdiction }}</p>
+				<p><strong>Холдинговая компания бенефициара: </strong>{{ instance.beneficiary.ben_holding }}</p>
+				<p><strong>Ссылка: </strong>{{ instance.beneficiary.ben_link }}</p>
+	
+			</div>
+			
+		</section>
+		
+	{% endblock %}

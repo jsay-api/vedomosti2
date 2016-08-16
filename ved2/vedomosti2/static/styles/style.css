@@ -233,6 +233,11 @@ a, a:hover, a:active {
 }
 
 
+/*Nav-tabs in index*/
+.nav-tabs {
+  cursor: pointer;
+}
+
 
 /*Footer*/
 footer {

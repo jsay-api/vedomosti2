@@ -24,7 +24,6 @@ def BO(request):
 		query = request.POST['query']
 		print(query)
 		queryset_list = BeneficiariesOffshores.objects.all().order_by("offshore__off_name")
-		# query = request.GET.get("q")
 		
 		if query:
 			queryset_list = queryset_list.filter(
@@ -182,7 +181,7 @@ def detail(request, id=None):
 	context = {
 		"instance": instance
 	}
-	return render(request, 'detail.html', context, context_instance=RequestContext(request))
+	return render(request, 'off_detail.html', context, context_instance=RequestContext(request))
 
 def DetailView(request, slug=None):
 	template_name = None

@@ -20,12 +20,13 @@ from Users.views import *
 from django.conf import settings
 from django.conf.urls import patterns
 from django.views.static import serve
+import uuid
 
 
 urlpatterns = [
     url(r'^vedadmin/', admin.site.urls),
     url(r'^$', home),
-    url(r'^(?P<id>\d+)/$', detail, name = 'detail'),
+    url(r'^(?P<id>[-\w]+)/$', detail),
     # url(r'^(?P<slug>\d+)/$', DetailView.as_view(model = '', template_name = '')),
     url(r'^BO/$', BO),
     url(r'^AB/$', AB),

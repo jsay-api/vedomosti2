@@ -2,6 +2,7 @@
 
 from django.contrib import admin
 from .models import *
+import uuid
 
 # Admin customization
 admin.site.site_header = "ВЕДОМОСТИ | ОФШОРЫ"
@@ -58,8 +59,8 @@ class OffshoreModelAdmin(admin.ModelAdmin):
 	list_display = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "off_link"]
 	list_display_links = ["off_name", "off_link"]
 	search_fields = ["off_name", "off_jurisdiction", "off_parent"]
-	fields = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb", "off_link", "slug"]
-	readonly_fields = ['image_thumb']
+	fields = ["id", "off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb", "off_link", "slug"]
+	readonly_fields = ['image_thumb', "id"]
 	prepopulated_fields = {"slug": ("off_name",)}
 	list_per_page = 10
 	# inlines = [BOInline, OAInline]
