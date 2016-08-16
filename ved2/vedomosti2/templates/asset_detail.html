@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+	{% block title %}
+		<title>{{ instance.asset.asset_name }}</title>
+	{% endblock %}
+
+	{% block content %}
+		<section class="jumbotron">
+			<div class="detail">
+				
+				<p><strong>Актив: </strong>{{ instance.asset.asset_name }} {{ instance.beneficiary.ben_lastname }}</p>
+				<p><strong>Ссылка: </strong>{{ instance.asset.asset_link }}</p>
+	
+			</div>
+			
+		</section>
+		
+	{% endblock %}

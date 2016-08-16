@@ -17,6 +17,7 @@
 				<p><strong>Источник: </strong>{{ instance.source }}</p>
 				{% if instance.offshore.file %}<p><strong>Прикрепленные файлы: </strong><a href="{{ instance.offshore.file.url }}">{{ instance.offshore.file }}</a></p>{% endif %}
 				{% if instance.offshore.image %}<p><strong>Прикрепленные изображения: </strong><img src="{{ instance.offshore.image.url }}" class="img-responsive"></p> {% endif %}
+				<p><strong>Ссылка: </strong>{{ instance.offshore.off_link }}</p>
 	
 			</div>
 			
