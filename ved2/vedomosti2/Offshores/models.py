@@ -8,7 +8,7 @@ from unidecode import unidecode
 import uuid
 
 class Asset(models.Model):
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	asset_name = models.CharField(verbose_name = "название актива", max_length = 100, unique=True)
 	asset_link = models.CharField(verbose_name = "ссылка", max_length = 200, blank = True)
 	slug = models.SlugField(unique = True, allow_unicode = True, max_length = 200)
@@ -18,7 +18,7 @@ class Asset(models.Model):
 		verbose_name_plural = "активы"
 
 	def save(self, *args):
-		self.slug = slugify(self.asset_name+'-'+str(self.id))
+		self.slug = slugify(self.asset_name+'-'+str(self.uuid))
 		super(Asset, self).save(*args)
 
 	def __unicode__(self):
@@ -29,13 +29,13 @@ class Asset(models.Model):
 
 
 class Beneficiary(models.Model):
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	ben_name = models.CharField(verbose_name = "имя", max_length = 50)
 	ben_lastname = models.CharField(verbose_name = "фамилия", max_length = 100)
 	ben_midname = models.CharField(verbose_name = "отчество", max_length = 30, blank = True)
 	ben_holding = models.CharField(verbose_name = "холдинговая компания бенефициара", max_length = 70, blank = True)
 	ben_link = models.CharField(verbose_name = "ссылка", max_length = 200, blank = True)
-	slug = models.SlugField(unique = True, allow_unicode = True, max_length = 200)
+	slug = models.SlugField(unique = True, allow_unicode = True)
 
 	class Meta:
 		unique_together = ('ben_name', 'ben_lastname', 'ben_midname',)
@@ -44,7 +44,7 @@ class Beneficiary(models.Model):
 		verbose_name_plural = "бенефициары"
 
 	def save(self, *args):
-		self.slug = slugify(self.ben_name+'-'+self.ben_lastname+'-'+str(self.id))
+		self.slug = slugify(self.ben_name+'-'+self.ben_lastname+'-'+str(self.uuid))
 		super(Beneficiary, self).save(*args)
 	
 	def clean(self):
@@ -113,7 +113,7 @@ class Offshore(models.Model):
 
 	
 class AssetsBeneficiaries(models.Model):
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	beneficiary = models.ForeignKey(Beneficiary,verbose_name = "бенефициар", on_delete = models.SET(""))
 	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля бенефициара в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
@@ -137,7 +137,7 @@ class AssetsBeneficiaries(models.Model):
 
 
 class BeneficiariesOffshores(models.Model):
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	beneficiary = models.ForeignKey(Beneficiary, verbose_name = "бенефициар", on_delete = models.SET(""))
 	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля бенефициара в офшоре, %", max_digits = 7, decimal_places = 4, blank = True, default = 0.0)
@@ -162,7 +162,7 @@ class BeneficiariesOffshores(models.Model):
 
 
 class OffshoresAssets(models.Model):
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
 	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля офшора в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
@@ -186,7 +186,7 @@ class OffshoresAssets(models.Model):
 
 
 class Links(models.Model):
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	link = models.CharField(verbose_name = "ссылка", max_length = 200)
 	link_name = models.CharField(verbose_name = "название ресурса", max_length = 150)
 	link_login = models.CharField(verbose_name = "логин для ресурса", max_length = 50)
