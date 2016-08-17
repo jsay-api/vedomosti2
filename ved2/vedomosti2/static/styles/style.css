@@ -238,6 +238,11 @@ a, a:hover, a:active {
   cursor: pointer;
 }
 
+/*Details pages*/
+.detail {
+  padding-left: 20px;
+}
+
 
 /*Footer*/
 footer {

@@ -54,9 +54,9 @@
 							<th>
 								Источник
 							</th>
-							<!-- <th>
+							<th>
 								Ссылка
-							</th> -->
+							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -66,7 +66,7 @@
 								{{ forloop.counter }}
 							</td>
 							<td>
-								<a href="{{ off.get_absolute_url }}">{{ off.offshore.off_name }}</a>
+								<a href="/offshore/{{ off.offshore.slug }}">{{ off.offshore.off_name }}</a>
 							</td>
 							<td>
 								{{ off.offshore.off_jurisdiction }}
@@ -89,9 +89,9 @@
 							<td>
 								{{ off.source }}
 							</td>
-							<!-- <td>
+							<td>
 								<a href="{{ off.link }}">
-							</td> -->
+							</td>
 						</tr>
 					{% endfor %}
 					</tbody>

@@ -7,6 +7,7 @@ from django.http import Http404, JsonResponse
 from django.template import loader
 from django.views.generic.base import View
 from .models import *
+from django.views.generic import TemplateView
 
 
 def home(request):
@@ -176,21 +177,25 @@ def AO(request):
 
 # 	return render(request, 'AO.html', context)
 
-def detail(request, id=None):
-	instance = get_object_or_404(BeneficiariesOffshores, id = id)
+def detail(request, slug=None):
+	instance = get_object_or_404(Offshore, slug = slug)
 	context = {
 		"instance": instance
 	}
+	print(instance)
 	return render(request, 'off_detail.html', context, context_instance=RequestContext(request))
 
-def DetailView(request, slug=None):
-	template_name = None
+class DetailView(TemplateView):
 	model = None
-	instance = get_object_or_404(self.model, slug = slug)
-	context = {
-		"instance": instance
-	}
-	return render(request, self.template_name, context, context_instance=RequestContext(request))
+	template_name = None
+
+	def details(self, request, slug=None):
+		instance = get_object_or_404(self.model, slug = slug)
+		print(instance)
+		context = {
+			"instance": instance
+		}
+		return render(request, self.template_name, context, context_instance=RequestContext(request))
 
 def logout(request):
 	auth.logout(request)

@@ -60,7 +60,7 @@ class Beneficiary(models.Model):
 
 
 class Offshore(models.Model):
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	off_name = models.CharField(verbose_name = "название офшора", max_length = 50, unique=True)
 	off_jurisdiction = models.CharField(verbose_name = "юрисдикция офшора", max_length = 50, blank = True)
 	file = models.FileField(upload_to = "offshores/", blank = True, null = True)
@@ -79,7 +79,7 @@ class Offshore(models.Model):
 		self.off_name = self.off_name.title()
 
 	def save(self, *args):
-		self.slug = slugify(self.off_name+'-'+str(self.id))
+		self.slug = slugify(self.off_name+'-'+str(self.uuid))
 		super(Offshore, self).save(*args)
 
 	def __unicode__(self):

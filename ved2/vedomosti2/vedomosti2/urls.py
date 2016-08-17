@@ -26,15 +26,17 @@ import uuid
 urlpatterns = [
     url(r'^vedadmin/', admin.site.urls),
     url(r'^$', home),
-    url(r'^(?P<id>[-\w]+)/$', detail),
-    # url(r'^(?P<slug>\d+)/$', DetailView.as_view(model = '', template_name = '')),
     url(r'^BO/$', BO),
     url(r'^AB/$', AB),
     url(r'^AO/$', AO),
-    url(r'^user/logout/$', logout),
     url(r'^login/$', form),
     url(r'^user/login/$', login),
     url(r'^faq/$', faq),
+    # url(r'^(?P<id>\d+)/$', detail),
+    # url(r'^offshore/(?P<slug>[-\w]+)/$', detail),
+    url(r'^offshore/(?P<slug>[-\w]+)/$', DetailView.as_view(model = 'Offshore', template_name = 'off_detail.html')),
+    url(r'^user/logout/$', logout),
+    
 ]
 
 
