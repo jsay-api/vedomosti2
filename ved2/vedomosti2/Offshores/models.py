@@ -8,7 +8,8 @@ from unidecode import unidecode
 import uuid
 
 class Asset(models.Model):
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4 and max_length = 32
+	uuid = models.UUIDField(editable=False)
 	asset_name = models.CharField(verbose_name = "название актива", max_length = 100, unique=True)
 	asset_link = models.CharField(verbose_name = "ссылка", max_length = 200, blank = True)
 	slug = models.SlugField(unique = True, allow_unicode = True, max_length = 200)
@@ -29,13 +30,14 @@ class Asset(models.Model):
 
 
 class Beneficiary(models.Model):
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
+	uuid = models.UUIDField(editable=False)
 	ben_name = models.CharField(verbose_name = "имя", max_length = 50)
 	ben_lastname = models.CharField(verbose_name = "фамилия", max_length = 100)
 	ben_midname = models.CharField(verbose_name = "отчество", max_length = 30, blank = True)
 	ben_holding = models.CharField(verbose_name = "холдинговая компания бенефициара", max_length = 70, blank = True)
 	ben_link = models.CharField(verbose_name = "ссылка", max_length = 200, blank = True)
-	slug = models.SlugField(unique = True, allow_unicode = True)
+	slug = models.SlugField(unique = True, allow_unicode = True, max_length = 200)
 
 	class Meta:
 		unique_together = ('ben_name', 'ben_lastname', 'ben_midname',)
@@ -60,7 +62,8 @@ class Beneficiary(models.Model):
 
 
 class Offshore(models.Model):
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
+	uuid = models.UUIDField(editable=False)
 	off_name = models.CharField(verbose_name = "название офшора", max_length = 50, unique=True)
 	off_jurisdiction = models.CharField(verbose_name = "юрисдикция офшора", max_length = 50, blank = True)
 	file = models.FileField(upload_to = "offshores/", blank = True, null = True)
@@ -113,7 +116,8 @@ class Offshore(models.Model):
 
 	
 class AssetsBeneficiaries(models.Model):
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
+	uuid = models.UUIDField(editable=False)
 	beneficiary = models.ForeignKey(Beneficiary,verbose_name = "бенефициар", on_delete = models.SET(""))
 	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля бенефициара в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
@@ -137,7 +141,8 @@ class AssetsBeneficiaries(models.Model):
 
 
 class BeneficiariesOffshores(models.Model):
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
+	uuid = models.UUIDField(editable=False)
 	beneficiary = models.ForeignKey(Beneficiary, verbose_name = "бенефициар", on_delete = models.SET(""))
 	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля бенефициара в офшоре, %", max_digits = 7, decimal_places = 4, blank = True, default = 0.0)
@@ -162,7 +167,8 @@ class BeneficiariesOffshores(models.Model):
 
 
 class OffshoresAssets(models.Model):
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
+	uuid = models.UUIDField(editable=False)
 	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
 	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля офшора в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
@@ -186,7 +192,8 @@ class OffshoresAssets(models.Model):
 
 
 class Links(models.Model):
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
+	uuid = models.UUIDField(editable=False)
 	link = models.CharField(verbose_name = "ссылка", max_length = 200)
 	link_name = models.CharField(verbose_name = "название ресурса", max_length = 150)
 	link_login = models.CharField(verbose_name = "логин для ресурса", max_length = 50)
