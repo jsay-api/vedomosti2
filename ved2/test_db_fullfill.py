@@ -87,14 +87,14 @@ def db_insert(numrows):
     o_file = 'offshores/favicon.xcf'
     o_image = 'offshores/favicon.png'
     o_prnt = 'parent' + num
-    o_link = 'http://' + o_name + '-' + num
+    o_link = 'http://' + o_name + '-' + num + '.com'
     o_uuid = uuid.uuid4().hex
     o_slug = o_name + str(o_uuid)
     b_name = 'Michael' + num
     b_lname = 'Prohorov' + num
     b_mname = 'Dmitrievich' + num
     b_holding = 'Onexim' + num
-    b_link = 'http://onexim.ru/' + b_name + b_lname + '-' + num
+    b_link = 'http://onexim.ru/' + b_name + b_lname + '-' + num + '.com'
     b_uuid = uuid.uuid4().hex
     b_slug = b_lname + str(b_uuid)
 

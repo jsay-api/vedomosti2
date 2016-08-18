@@ -65,8 +65,10 @@
 							<td>
 								{{ forloop.counter }}
 							</td>
+							<!-- /offshore/{{ off.offshore.slug }} -->
+							
 							<td>
-								<a href="/offshore/{{ off.offshore.slug }}">{{ off.offshore.off_name }}</a>
+								<a href="{{ off.offshore.get_absolute_url }}">{{ off.offshore.off_name }}</a>
 							</td>
 							<td>
 								{{ off.offshore.off_jurisdiction }}

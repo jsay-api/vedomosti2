@@ -95,6 +95,9 @@ class Offshore(models.Model):
 		return '<img src="/media/%s" width="100" height="100" />' % (self.image)
 	image_thumb.allow_tags = True
 
+	def get_absolute_url(self):
+		return reverse('offshore', kwargs = {"slug": self.slug})
+
 # def create_slug(instance, new_slug = None):
 # 	slug = slugify(instance.off_name)
 # 	if new_slug is not None:

@@ -34,7 +34,8 @@ urlpatterns = [
     url(r'^faq/$', faq),
     # url(r'^(?P<id>\d+)/$', detail),
     # url(r'^offshore/(?P<slug>[-\w]+)/$', detail),
-    url(r'^offshore/(?P<slug>[-\w]+)/$', DetailView.as_view(model = 'Offshore', template_name = 'off_detail.html')),
+    # DetailView.as_view(model = 'Offshore', template_name = 'off_detail.html')
+    url(r'^offshore/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = 'Offshore', template_name = 'off_detail.html'), name = 'offshore'),
     url(r'^user/logout/$', logout),
     
 ]

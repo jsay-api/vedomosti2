@@ -7,7 +7,7 @@ from django.http import Http404, JsonResponse
 from django.template import loader
 from django.views.generic.base import View
 from .models import *
-from django.views.generic import TemplateView
+from django.views.generic import DetailView
 
 
 def home(request):
@@ -185,17 +185,31 @@ def detail(request, slug=None):
 	print(instance)
 	return render(request, 'off_detail.html', context, context_instance=RequestContext(request))
 
-class DetailView(TemplateView):
+class InstanceView(DetailView):
 	model = None
 	template_name = None
 
-	def details(self, request, slug=None):
-		instance = get_object_or_404(self.model, slug = slug)
-		print(instance)
-		context = {
-			"instance": instance
-		}
-		return render(request, self.template_name, context, context_instance=RequestContext(request))
+	def get_object(self):
+		object = super(InstanceView, self).get_object()
+		return object
+
+	# def get_queryset(self, request, slug = None):
+	# 	print (slug)
+	# 	instance = get_object_or_404(self.model, slug = slug)
+	# 	print(instance)
+	# 	# context = {
+	# 	# 	"instance": self.instance
+	# 	# }
+	# 	return instance
+
+	# def get_context_data(self, **kwargs):
+	# 	# Call the base implementation first to get a context
+	# 	context = super(DetailView, self).get_context_data(**kwargs)
+	# 	# Add in the publisher
+	# 	context['instance'] = self.instance
+	# 	return context
+
+
 
 def logout(request):
 	auth.logout(request)
