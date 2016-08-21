@@ -57,10 +57,10 @@ class Beneficiary(models.Model):
 		self.ben_lastname = self.ben_lastname.capitalize()
 
 	def __unicode__(self):
-		return self.ben_lastname
+		return u'%s %s' % (self.ben_name, self.ben_lastname)
 
 	def __str__(self):
-		return self.ben_lastname
+		return u'%s %s' % (self.ben_name, self.ben_lastname)
 
 	def get_absolute_url(self):
 		return reverse('beneficiary', kwargs = {"slug": self.slug})

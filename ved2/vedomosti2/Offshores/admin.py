@@ -30,7 +30,7 @@ class AssetModelAdmin(admin.ModelAdmin):
 	search_fields = ["asset_name"]
 	# inlines = [ABInline, OAInline]
 	list_per_page = 10
-	prepopulated_fields = {"slug": ("asset_name",)}
+	# prepopulated_fields = {"slug": ("asset_name",)}
 	class Meta:
 		model = Asset
 
@@ -47,7 +47,7 @@ class BeneficiaryModelAdmin(admin.ModelAdmin):
 	# inlines = [ABInline]
 	list_display = ["ben_name", "ben_lastname", "ben_midname", "ben_holding", "ben_link"]
 	list_per_page = 10
-	prepopulated_fields = {"slug": ("ben_name", "ben_lastname")}
+	# prepopulated_fields = {"slug": ("ben_name", "ben_lastname")}
 	class Meta:
 		model = Beneficiary
 
@@ -59,16 +59,13 @@ class OffshoreModelAdmin(admin.ModelAdmin):
 	list_display = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "off_link"]
 	list_display_links = ["off_name", "off_link"]
 	search_fields = ["off_name", "off_jurisdiction", "off_parent"]
-	fields = ["id", "off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb", "off_link", "slug"]
-	readonly_fields = ['image_thumb', "id"]
-	prepopulated_fields = {"slug": ("off_name",)}
+	fields = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb", "off_link"]
+	readonly_fields = ['image_thumb']
+	# prepopulated_fields = {"slug": ("off_name",)}
 	list_per_page = 10
 	# inlines = [BOInline, OAInline]
 	class Meta:
 		model = Offshore
-
-	# def get_model_perms(self, request):
-	# 	return {}
 
 
 class ABModelAdmin(admin.ModelAdmin):
