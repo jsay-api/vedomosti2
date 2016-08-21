@@ -28,8 +28,9 @@ class BOInline(admin.StackedInline):
 class AssetModelAdmin(admin.ModelAdmin):
 	list_display = ["asset_name", "asset_link"]
 	search_fields = ["asset_name"]
-	# inlines = [ABInline, OAInline]
+	fields = ["asset_name", "asset_link"]
 	list_per_page = 10
+	# inlines = [ABInline, OAInline]
 	# prepopulated_fields = {"slug": ("asset_name",)}
 	class Meta:
 		model = Asset
@@ -44,9 +45,10 @@ class AssetModelAdmin(admin.ModelAdmin):
 class BeneficiaryModelAdmin(admin.ModelAdmin):
 	search_fields = ["ben_name", "ben_lastname", "ben_holding"]
 	list_display_links = ["ben_lastname", "ben_link"]
-	# inlines = [ABInline]
+	fields = ["ben_name", "ben_lastname", "ben_midname", "ben_holding", "ben_link"]
 	list_display = ["ben_name", "ben_lastname", "ben_midname", "ben_holding", "ben_link"]
 	list_per_page = 10
+	# inlines = [ABInline]
 	# prepopulated_fields = {"slug": ("ben_name", "ben_lastname")}
 	class Meta:
 		model = Beneficiary
@@ -61,8 +63,8 @@ class OffshoreModelAdmin(admin.ModelAdmin):
 	search_fields = ["off_name", "off_jurisdiction", "off_parent"]
 	fields = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb", "off_link"]
 	readonly_fields = ['image_thumb']
-	# prepopulated_fields = {"slug": ("off_name",)}
 	list_per_page = 10
+	# prepopulated_fields = {"slug": ("off_name",)}
 	# inlines = [BOInline, OAInline]
 	class Meta:
 		model = Offshore
@@ -142,9 +144,6 @@ class OAModelAdmin(admin.ModelAdmin):
 		return object.offshore.off_parent
 	off_prnt.short_description = "Материнский офшор"
 
-	# def ast_name(self, object):
-	# 	return object.asset.asset_name
-	# ast_name.short_description = "актив"
 
 
 
