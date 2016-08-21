@@ -35,7 +35,7 @@
     		width: 100%;
     		position: relative;
     		z-index: 10000;
-    		overflow: visible;
+    		overflow: visible !important;
     		overflow-x:scroll;
 		}
 		
@@ -45,6 +45,7 @@
 			text-shadow: none;
 			position: relative;
     		z-index: 10000;
+    		overflow: visible;
 		}
 
 		.header .navi {
@@ -61,6 +62,7 @@
 		.header .menu {
 		    display: inline-block;
 		    margin-left: 15px;
+		    overflow: visible;
 		}
 
 		.menu {
@@ -85,6 +87,7 @@
 		  font-family: 'Roboto', Helvetica, sans-serif; 
 		  background-color: #fff6f1;
 		  color: #332f2e;
+		  overflow: visible !important;
 		}
 
 		.menu .dropdown-menu li a {
@@ -135,6 +138,10 @@
 
 		
 		/*Content*/
+		.jumbotron {
+			z-index: 0;
+		}
+
 		.suit-columns {
 			z-index: 0;
 		}
@@ -155,6 +162,7 @@
 
 		.wrap {
 			background-color: #fff6f1 !important;
+			z-index: 0;
 		}
 
 		a {color: #2e6f6f;}
