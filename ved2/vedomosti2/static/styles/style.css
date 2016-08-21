@@ -233,11 +233,22 @@ a, a:hover, a:active {
 }
 
 
+/*Nav-tabs in index*/
+.nav-tabs {
+  cursor: pointer;
+}
+
+/*Details pages*/
+.detail {
+  padding-left: 20px;
+}
+
 
 /*Footer*/
 footer {
   font-size: 12px;
   padding: 20px 0;
+  height: 50px;
 }
 
 footer .col-sm-8 {

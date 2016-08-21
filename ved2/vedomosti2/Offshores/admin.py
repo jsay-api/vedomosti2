@@ -2,6 +2,7 @@
 
 from django.contrib import admin
 from .models import *
+import uuid
 
 # Admin customization
 admin.site.site_header = "ВЕДОМОСТИ | ОФШОРЫ"
@@ -25,10 +26,11 @@ class BOInline(admin.StackedInline):
 
 
 class AssetModelAdmin(admin.ModelAdmin):
-	list_display = ["asset_name"]
+	list_display = ["asset_name", "asset_link"]
 	search_fields = ["asset_name"]
 	# inlines = [ABInline, OAInline]
 	list_per_page = 10
+	# prepopulated_fields = {"slug": ("asset_name",)}
 	class Meta:
 		model = Asset
 
@@ -40,13 +42,12 @@ class AssetModelAdmin(admin.ModelAdmin):
 
 
 class BeneficiaryModelAdmin(admin.ModelAdmin):
-	
-	list_display_links = ["ben_lastname"]
 	search_fields = ["ben_name", "ben_lastname", "ben_holding"]
+	list_display_links = ["ben_lastname", "ben_link"]
 	# inlines = [ABInline]
-	list_display = ["ben_name", "ben_lastname", "ben_midname", "ben_holding"]
+	list_display = ["ben_name", "ben_lastname", "ben_midname", "ben_holding", "ben_link"]
 	list_per_page = 10
-	# list_editable = ["ben_name"]
+	# prepopulated_fields = {"slug": ("ben_name", "ben_lastname")}
 	class Meta:
 		model = Beneficiary
 
@@ -55,26 +56,24 @@ class BeneficiaryModelAdmin(admin.ModelAdmin):
 
 
 class OffshoreModelAdmin(admin.ModelAdmin):
-	list_display = ["off_name", "off_jurisdiction", "off_parent", "file", "image"]
-	list_display_links = ["off_name"]
+	list_display = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "off_link"]
+	list_display_links = ["off_name", "off_link"]
 	search_fields = ["off_name", "off_jurisdiction", "off_parent"]
-	fields = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb"]
+	fields = ["off_name", "off_jurisdiction", "off_parent", "file", "image", "image_thumb", "off_link"]
 	readonly_fields = ['image_thumb']
+	# prepopulated_fields = {"slug": ("off_name",)}
 	list_per_page = 10
 	# inlines = [BOInline, OAInline]
 	class Meta:
 		model = Offshore
 
-	# def get_model_perms(self, request):
-	# 	return {}
-
 
 class ABModelAdmin(admin.ModelAdmin):
-	list_display = ["ben_name", "beneficiary", "ben_midname", "ben_holding", "asset", "share", "rel_date", "source"]
+	list_display = ["ben_name", "beneficiary", "ben_midname", "ben_holding", "asset", "share", "rel_date", "source", "link"]
 	search_fields = ["asset__asset_name", "beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_midname", "beneficiary__ben_holding", "share",  "source"]
 	list_filter = ["asset", "beneficiary", "source"]
 	list_editable = ["share", "source"]
-	list_display_links = ["beneficiary", "asset"]
+	list_display_links = ["beneficiary", "asset", "link"]
 	list_per_page = 10
 	class Meta:
 		model = AssetsBeneficiaries
@@ -90,16 +89,12 @@ class ABModelAdmin(admin.ModelAdmin):
 	def ben_holding(self, object):
 		return object.beneficiary.ben_holding
 	ben_holding.short_description = "холдинговая компания"
-
-	# def list_of_bens(self, obj):
-	# 	return ("%s" % ','.join([ben.ben_lastname for be in obj.beneficiary.all()]))
-	# list_of_bens.short_description = 'Beneficiaries'
 	
 
 class BOModelAdmin(admin.ModelAdmin):
-	list_display = ["offshore", "off_jur", "off_prnt", "ben_name", "beneficiary", "ben_midname", "ben_holding", "share", "rel_date",  "source"]
+	list_display = ["offshore", "off_jur", "off_prnt", "ben_name", "beneficiary", "ben_midname", "ben_holding", "share", "rel_date",  "source", "link"]
 	list_filter = ["beneficiary", "offshore", "source"]
-	list_display_links = ["offshore", "beneficiary"]
+	list_display_links = ["offshore", "beneficiary", "link"]
 	search_fields = ["beneficiary__ben_lastname", "beneficiary__ben_name", "beneficiary__ben_holding", "offshore__off_name", "offshore__off_jurisdiction", "offshore__off_parent", "source", "share", ]
 	list_per_page = 10
 	class Meta:
@@ -150,6 +145,7 @@ class OAModelAdmin(admin.ModelAdmin):
 	# def ast_name(self, object):
 	# 	return object.asset.asset_name
 	# ast_name.short_description = "актив"
+
 
 
 admin.site.register(Asset, AssetModelAdmin)

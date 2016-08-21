@@ -20,19 +20,26 @@ from Users.views import *
 from django.conf import settings
 from django.conf.urls import patterns
 from django.views.static import serve
+import uuid
 
 
 urlpatterns = [
     url(r'^vedadmin/', admin.site.urls),
     url(r'^$', home),
-    url(r'^(?P<id>\d+)/$', detail, name = 'detail'),
     url(r'^BO/$', BO),
     url(r'^AB/$', AB),
     url(r'^AO/$', AO),
-    url(r'^user/logout/$', logout),
     url(r'^login/$', form),
     url(r'^user/login/$', login),
     url(r'^faq/$', faq),
+    # url(r'^(?P<id>\d+)/$', detail),
+    # url(r'^offshore/(?P<slug>[-\w]+)/$', detail),
+    # DetailView.as_view(model = 'Offshore', template_name = 'off_detail.html')
+    url(r'^offshore/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Offshore, template_name = 'off_detail.html'), name = 'offshore'),
+    url(r'^beneficiary/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Beneficiary, template_name = 'ben_detail.html'), name = 'beneficiary'),
+    url(r'^asset/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Asset, template_name = 'asset_detail.html'), name = 'asset'),
+    url(r'^user/logout/$', logout),
+    
 ]
 
 

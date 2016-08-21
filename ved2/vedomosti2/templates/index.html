@@ -15,7 +15,7 @@
 					<form role="form" method="POST" id = "sch">
 						<div class="col-md-11 srch">
 							{% csrf_token %}
-							<input type="search" name = "q" class="form-control sprite" id="Search" placeholder="Введите название офшора, страну или имя бенефициара" />
+							<input type="search" name = "q" class="form-control sprite" id="Search" placeholder="Введите название офшора/актива, страну или имя бенефициара" />
 						</div>
 						<!-- value = "{{ request.GET.q }}" -->
 						<div class="col-md-1 no-pad">
@@ -24,7 +24,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-12 settings"><a href="#" >Параметры поиска <img src={% static "img/settings.png" %} alt="settings"></a></div>
+			<!-- <div class="col-md-12 settings"><a href="#" >Параметры поиска <img src={% static "img/settings.png" %} alt="settings"></a></div> -->
 			
 			
 			<div id="ajax-content">

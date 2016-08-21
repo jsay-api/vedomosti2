@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Offshores',
     'Users',
+    'slugify',
 ]
 
 MIDDLEWARE_CLASSES = [

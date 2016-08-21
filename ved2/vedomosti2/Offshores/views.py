@@ -5,7 +5,9 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404, JsonResponse
 from django.template import loader
+from django.views.generic.base import View
 from .models import *
+from django.views.generic import DetailView
 
 
 def home(request):
@@ -23,7 +25,6 @@ def BO(request):
 		query = request.POST['query']
 		print(query)
 		queryset_list = BeneficiariesOffshores.objects.all().order_by("offshore__off_name")
-		# query = request.GET.get("q")
 		
 		if query:
 			queryset_list = queryset_list.filter(
@@ -54,7 +55,7 @@ def BO(request):
 		data = {'html': html}
 
 		return JsonResponse(data)
-	# raise Http404
+	raise Http404
 
 
 def AB(request):
@@ -176,12 +177,22 @@ def AO(request):
 
 # 	return render(request, 'AO.html', context)
 
-def detail(request, id=None):
-	instance = get_object_or_404(BeneficiariesOffshores, id = id)
+def detail(request, slug=None):
+	instance = get_object_or_404(Offshore, slug = slug)
 	context = {
 		"instance": instance
 	}
-	return render(request, 'detail.html', context, context_instance=RequestContext(request))
+	print(instance)
+	return render(request, 'off_detail.html', context, context_instance=RequestContext(request))
+
+class InstanceView(DetailView):
+	model = None
+	template_name = None
+
+	def get_object(self):
+		object = super(InstanceView, self).get_object()
+		return object
+
 
 def logout(request):
 	auth.logout(request)
