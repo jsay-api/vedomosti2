@@ -9,7 +9,7 @@ import uuid
 
 class Asset(models.Model):
 	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4 and max_length = 32
-	uuid = models.UUIDField(editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	asset_name = models.CharField(verbose_name = "название актива", max_length = 100, unique=True)
 	asset_link = models.CharField(verbose_name = "ссылка", max_length = 200, blank = True)
 	slug = models.SlugField(unique = True, allow_unicode = True, max_length = 200)
@@ -28,10 +28,13 @@ class Asset(models.Model):
 	def __str__(self):
 		return self.asset_name
 
+	def get_absolute_url(self):
+		return reverse('asset', kwargs = {"slug": self.slug})
+
 
 class Beneficiary(models.Model):
 	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
-	uuid = models.UUIDField(editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	ben_name = models.CharField(verbose_name = "имя", max_length = 50)
 	ben_lastname = models.CharField(verbose_name = "фамилия", max_length = 100)
 	ben_midname = models.CharField(verbose_name = "отчество", max_length = 30, blank = True)
@@ -59,11 +62,14 @@ class Beneficiary(models.Model):
 	def __str__(self):
 		return self.ben_lastname
 
+	def get_absolute_url(self):
+		return reverse('beneficiary', kwargs = {"slug": self.slug})
+
 
 
 class Offshore(models.Model):
 	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
-	uuid = models.UUIDField(editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	off_name = models.CharField(verbose_name = "название офшора", max_length = 50, unique=True)
 	off_jurisdiction = models.CharField(verbose_name = "юрисдикция офшора", max_length = 50, blank = True)
 	file = models.FileField(upload_to = "offshores/", blank = True, null = True)
@@ -120,7 +126,7 @@ class Offshore(models.Model):
 	
 class AssetsBeneficiaries(models.Model):
 	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
-	uuid = models.UUIDField(editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	beneficiary = models.ForeignKey(Beneficiary,verbose_name = "бенефициар", on_delete = models.SET(""))
 	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля бенефициара в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
@@ -145,7 +151,7 @@ class AssetsBeneficiaries(models.Model):
 
 class BeneficiariesOffshores(models.Model):
 	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
-	uuid = models.UUIDField(editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	beneficiary = models.ForeignKey(Beneficiary, verbose_name = "бенефициар", on_delete = models.SET(""))
 	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля бенефициара в офшоре, %", max_digits = 7, decimal_places = 4, blank = True, default = 0.0)
@@ -171,7 +177,7 @@ class BeneficiariesOffshores(models.Model):
 
 class OffshoresAssets(models.Model):
 	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
-	uuid = models.UUIDField(editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	offshore = models.ForeignKey(Offshore, verbose_name = "офшор", on_delete = models.SET(""))
 	asset = models.ForeignKey(Asset, verbose_name = "актив", on_delete = models.SET(""))
 	share = models.DecimalField(verbose_name = "доля офшора в активе, %", max_digits = 6, decimal_places = 4, blank = True, default = 0.0)
@@ -196,7 +202,7 @@ class OffshoresAssets(models.Model):
 
 class Links(models.Model):
 	#FIXME: when DEBUG == False: add to uuid default=uuid.uuid4
-	uuid = models.UUIDField(editable=False)
+	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	link = models.CharField(verbose_name = "ссылка", max_length = 200)
 	link_name = models.CharField(verbose_name = "название ресурса", max_length = 150)
 	link_login = models.CharField(verbose_name = "логин для ресурса", max_length = 50)

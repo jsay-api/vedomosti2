@@ -35,7 +35,9 @@ urlpatterns = [
     # url(r'^(?P<id>\d+)/$', detail),
     # url(r'^offshore/(?P<slug>[-\w]+)/$', detail),
     # DetailView.as_view(model = 'Offshore', template_name = 'off_detail.html')
-    url(r'^offshore/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = 'Offshore', template_name = 'off_detail.html'), name = 'offshore'),
+    url(r'^offshore/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Offshore, template_name = 'off_detail.html'), name = 'offshore'),
+    url(r'^beneficiary/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Beneficiary, template_name = 'ben_detail.html'), name = 'beneficiary'),
+    url(r'^asset/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Asset, template_name = 'asset_detail.html'), name = 'asset'),
     url(r'^user/logout/$', logout),
     
 ]

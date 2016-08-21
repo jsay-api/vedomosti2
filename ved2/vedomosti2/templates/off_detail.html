@@ -10,14 +10,11 @@
 			<div class="detail">
 				
 				<p><strong>Офшор: </strong>{{ object.off_name }}</p>
-				<!-- <p><strong>Юрисдикция офшора: </strong>{{ offshore.off_jurisdiction }}</p> -->
-				<!-- <p><strong>Бенефициар: </strong>{{ instance.ben_name }} {{ instance.beneficiary.ben_lastname }}</p> -->
-				<!-- <p><strong>Доля бенефициара в офшоре, %: </strong>{{ instance.share }}</p>
-				<p><strong>Дата актуальности: </strong>{{ instance.rel_date }}</p>
-				<p><strong>Источник: </strong>{{ instance.source }}</p> -->
-				<!-- {% if offshore.offshore.file %}<p><strong>Прикрепленные файлы: </strong><a href="{{ offshore.offshore.file.url }}">{{ offshore.offshore.file }}</a></p>{% endif %}
-				{% if offshore.offshore.image %}<p><strong>Прикрепленные изображения: </strong><img src="{{ offshore.offshore.image.url }}" class="img-responsive"></p> {% endif %}
-				<p><strong>Ссылка: </strong><a href="{{ offshore.off_link }}" target = blank>{{ offshore.off_link }}</a></p> -->
+				<p><strong>Юрисдикция офшора: </strong>{{ object.off_jurisdiction }}</p>
+				<p><strong>Материнский офшор: </strong>{{ object.off_parent }}</p>
+				{% if object.file %}<p><strong>Прикрепленные файлы: </strong><a href="{{ object.file.url }}">{{ object.file }}</a></p>{% endif %}
+				{% if object.image %}<p><strong>Прикрепленные изображения: </strong><img src="{{ object.image.url }}" class="img-responsive"></p> {% endif %}
+				<p><strong>Ссылка: </strong><a href="{{ object.off_link }}" target = blank>{{ object.off_link }}</a></p>
 	
 			</div>
 			

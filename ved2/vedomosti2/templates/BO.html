@@ -77,7 +77,7 @@
 								{{ off.offshore.off_parent }}
 							</td>
 							<td>
-								{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}
+								<a href="{{ off.beneficiary.get_absolute_url }}">{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}</a>
 							</td>
 							<td>
 								{{ off.beneficiary.ben_holding }}
@@ -92,7 +92,7 @@
 								{{ off.source }}
 							</td>
 							<td>
-								<a href="{{ off.link }}">
+								<a href="{{ off.link }}">{{ off.link }}</a>
 							</td>
 						</tr>
 					{% endfor %}

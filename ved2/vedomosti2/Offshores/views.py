@@ -55,7 +55,7 @@ def BO(request):
 		data = {'html': html}
 
 		return JsonResponse(data)
-	# raise Http404
+	raise Http404
 
 
 def AB(request):
@@ -193,23 +193,6 @@ class InstanceView(DetailView):
 		object = super(InstanceView, self).get_object()
 		return object
 
-	# def get_queryset(self, request, slug = None):
-	# 	print (slug)
-	# 	instance = get_object_or_404(self.model, slug = slug)
-	# 	print(instance)
-	# 	# context = {
-	# 	# 	"instance": self.instance
-	# 	# }
-	# 	return instance
-
-	# def get_context_data(self, **kwargs):
-	# 	# Call the base implementation first to get a context
-	# 	context = super(DetailView, self).get_context_data(**kwargs)
-	# 	# Add in the publisher
-	# 	context['instance'] = self.instance
-	# 	return context
-
-
 
 def logout(request):
 	auth.logout(request)
@@ -219,13 +202,4 @@ def faq(request):
 	menu = 'disabled'
 	return render(request, 'faq.html', {"menu1": menu})
 
-
-# def BaseView(View):
-# 	template_name = None
-# 	model = None
-# 	def get(self, request, *args, **kwargs):
-# 		objects = self.model.objects.all()
-# 		context = {}
-# 		context['objects'] = objects
-# 		return render(request, self.template_name, context)
 

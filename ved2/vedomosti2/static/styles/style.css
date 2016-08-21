@@ -248,6 +248,7 @@ a, a:hover, a:active {
 footer {
   font-size: 12px;
   padding: 20px 0;
+  height: 50px;
 }
 
 footer .col-sm-8 {

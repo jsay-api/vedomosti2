@@ -60,10 +60,10 @@
 								{{ forloop.counter }}
 							</td>
 							<td>
-								{{ off.asset.asset_name }}
+								<a href="{{ off.asset.get_absolute_url }}">{{ off.asset.asset_name }}</a>
 							</td>
 							<td>
-								{{ off.offshore.off_name }}</a>
+								<a href="{{ off.offshore.get_absolute_url }}">{{ off.offshore.off_name }}</a>
 							</td>
 							<td>
 								{{ off.offshore.off_jurisdiction }}

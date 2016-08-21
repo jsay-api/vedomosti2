@@ -9,8 +9,8 @@
 		<section class="jumbotron">
 			<div class="detail">
 				
-				<p><strong>Актив: </strong>{{ instance.asset.asset_name }} {{ instance.beneficiary.ben_lastname }}</p>
-				<p><strong>Ссылка: </strong>{{ instance.asset.asset_link }}</p>
+				<p><strong>Актив: </strong>{{ object.asset_name }}</p>
+				<p><strong>Ссылка: </strong> <a href="{{ object.asset_link }}" target="blank">{{ object.asset_link }}</a></p>
 	
 			</div>
 			

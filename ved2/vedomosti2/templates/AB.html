@@ -57,10 +57,10 @@
 								{{ forloop.counter }}
 							</td>
 							<td>
-								{{ off.asset.asset_name }}
+								<a href="{{ off.asset.get_absolute_url }}">{{ off.asset.asset_name }}</a>
 							</td>
 							<td>
-								{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}</a>
+								<a href="{{ off.beneficiary.get_absolute_url }}">{{ off.beneficiary.ben_name }} {{ off.beneficiary.ben_lastname }}</a>
 							</td>
 							<td>
 								{{ off.beneficiary.ben_holding }}
