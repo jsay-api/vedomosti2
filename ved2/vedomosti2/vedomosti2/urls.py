@@ -26,6 +26,7 @@ import uuid
 urlpatterns = [
     url(r'^vedadmin/', admin.site.urls),
     url(r'^$', home),
+    url(r'^user/logout/$', logout),
     url(r'^BO/$', BO),
     url(r'^AB/$', AB),
     url(r'^AO/$', AO),
@@ -38,7 +39,6 @@ urlpatterns = [
     url(r'^offshore/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Offshore, template_name = 'off_detail.html'), name = 'offshore'),
     url(r'^beneficiary/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Beneficiary, template_name = 'ben_detail.html'), name = 'beneficiary'),
     url(r'^asset/(?P<slug>[-\w]+)/$', InstanceView.as_view(model = Asset, template_name = 'asset_detail.html'), name = 'asset'),
-    url(r'^user/logout/$', logout),
     
 ]
 
